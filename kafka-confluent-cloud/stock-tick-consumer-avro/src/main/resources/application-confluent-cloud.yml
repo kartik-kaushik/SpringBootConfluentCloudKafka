@@ -1,0 +1,22 @@
+# Specific Confluent Cloud Configuration file.
+# This profile with inherit all properties from application.yml
+# But will override properties:
+# spring.kafka.bootstrap-servers and schema.registry.url (part of spring.kafka.properties)
+
+spring:
+  kafka:
+    bootstrap-servers: pkc-lgwgm.eastus2.azure.confluent.cloud:9092
+    consumer:
+      auto-offset-reset: earliest
+      group-id: kafkaSchemaGroup
+    properties:
+      ssl.endpoint.identification.algorithm: https
+      sasl.mechanism: PLAIN
+      request.timeout.ms: 120000
+      security.protocol: SASL_SSL
+      retry.backoff.ms: 500
+      sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="SQBFW4EG47FHFWSI" password="qzbQtcO+gN/IlsU4h7vJhwzb1waKAHJVdsxejVhnfL+4YQamXP09OU81LVm+b0i3" ;
+      # Schema Registry specific settings
+      schema.registry.url: https://psrc-4j1d2.westus2.azure.confluent.cloud
+      basic.auth.credentials.source: USER_INFO
+      schema.registry.basic.auth.user.info: DOHZ6NBYKYYT4ETU:Y27An9hSinEL07EA4qCzpXgTUCo/s5MRFuHtD3zJVmAW8akvNIz3LSYbO0OG0+Ry
